@@ -1,0 +1,128 @@
+package ex;
+
+import java.util.Date;
+
+public class ex {
+    public static void main(String[] args) {
+        
+        Tiker tiker1 = new Tiker(101, "AAPL", "NASDAQ");
+        Tiker tiker2 = new Tiker(102, "AMZN", "NASDAQ");
+
+        FinAsset finAsset1 = new FinAsset(1, tiker1, "SEC", new Date(122, 0, 1), "Apple Inc.", "Наличная", 1000.0, 100);
+        FinAsset finAsset2 = new FinAsset(2, tiker2, "SEC", new Date(122, 0, 2), "Amazon.com Inc.", "Безналичная", 1100.0, 110);
+
+        Security security1 = new Security(1, finAsset1, new Date(122, 3, 19), new Date(122, 4, 19));
+        Bond bond1 = new Bond(1, finAsset2, new Date(122, 5, 30), 4, 5.0);
+
+        System.out.println("Tiker 1: " + tiker1);
+        System.out.println("Tiker 2: " + tiker2);
+        System.out.println("FinAsset 1: " + finAsset1);
+        System.out.println("FinAsset 2: " + finAsset2);
+        System.out.println("Security 1: " + security1);
+        System.out.println("Bond 1: " + bond1);
+    }
+}
+
+class Tiker {
+    private int ID;
+    private String nameTiker;
+    private String dealPlace;
+
+    public Tiker(int ID, String nameTiker, String dealPlace) {
+        this.ID = ID;
+        this.nameTiker = nameTiker;
+        this.dealPlace = dealPlace;
+    }
+
+    @Override
+    public String toString() {
+        return new Object() {
+            @Override
+            public String toString() {
+                return "Tiker[ID=" + ID + ", NameTiker=" + nameTiker + ", DealPlace=" + dealPlace + "]";
+            }
+        }.toString();
+    }
+}
+
+class FinAsset {
+    private int ID;
+    private Tiker tiker;
+    private String registration;
+    private Date dataRegistration;
+    private String emitent;
+    private String formIssue;
+    private double principal;
+    private int amount;
+
+    public FinAsset(int ID, Tiker tiker, String registration, Date dataRegistration, String emitent, String formIssue, double principal, int amount) {
+        this.ID = ID;
+        this.tiker = tiker;
+        this.registration = registration;
+        this.dataRegistration = dataRegistration;
+        this.emitent = emitent;
+        this.formIssue = formIssue;
+        this.principal = principal;
+        this.amount = amount;
+    }
+
+    @Override
+    public String toString() {
+        return new Object() {
+            @Override
+            public String toString() {
+                return "FinAsset[ID=" + ID + ", Tiker=" + tiker + ", Registration=" + registration + ", DataRegistration=" + dataRegistration + ", Emitent=" + emitent + ", FormIssue=" + formIssue + ", Principal=" + principal + ", Amount=" + amount + "]";
+            }
+        }.toString();
+    }
+}
+
+class Security {
+    private int ID;
+    private FinAsset finAsset;
+    private Date dateAccommodation;
+    private Date dateReport;
+
+    public Security(int ID, FinAsset finAsset, Date dateAccommodation, Date dateReport) {
+        this.ID = ID;
+        this.finAsset = finAsset;
+        this.dateAccommodation = dateAccommodation;
+        this.dateReport = dateReport;
+    }
+
+    @Override
+    public String toString() {
+        return new Object() {
+            @Override
+            public String toString() {
+                return "Security[ID=" + ID + ", FinAsset=" + finAsset + ", DateAccommodation=" + dateAccommodation + ", DateReport=" + dateReport + "]";
+            }
+        }.toString();
+    }
+}
+
+class Bond {
+    private int ID;
+    private FinAsset finAsset;
+    private Date dataRepayment;
+    private int couponsAmount;
+    private double couponsRate;
+
+    public Bond(int ID, FinAsset finAsset, Date dataRepayment, int couponsAmount, double couponsRate) {
+        this.ID = ID;
+        this.finAsset = finAsset;
+        this.dataRepayment = dataRepayment;
+        this.couponsAmount = couponsAmount;
+        this.couponsRate = couponsRate;
+    }
+
+    @Override
+    public String toString() {
+        return new Object() {
+            @Override
+            public String toString() {
+                return "Bond[ID=" + ID + ", FinAsset=" + finAsset + ", DataRepayment=" + dataRepayment + ", CouponsAmount=" + couponsAmount + ", CouponsRate=" + couponsRate + "]";
+            }
+        }.toString();
+    }
+}
